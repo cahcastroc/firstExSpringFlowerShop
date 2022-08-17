@@ -1,19 +1,23 @@
 package com.sicredi.exercicio2.exceptions;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @ControllerAdvice
-public class ExceptionHandler extends ResponseEntityExceptionHandler {
+public class ProjectExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -23,10 +27,17 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex,erros,new HttpHeaders(),HttpStatus.BAD_REQUEST,request);
     }
 
-    @Override
-    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        return super.handleExceptionInternal(ex, body, headers, status, request);
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public ResponseEntity<Object> handleEmptyResultDataAccessException (EmptyResultDataAccessException ex, WebRequest request){
+        String msgUser = "O recurso solicitado não existe";
+        String msgDev = ex.toString();
+
+        List<Erro> erros = Arrays.asList(new Erro(msgUser,msgDev));
+
+        return handleExceptionInternal(ex,erros,new HttpHeaders(),HttpStatus.NOT_FOUND,request);
+
     }
+
 
     private List<Erro> generationErrors(BindingResult bindingResult) {
         List<Erro> erros = new ArrayList<Erro>();
@@ -38,4 +49,6 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         });
         return erros;
     }
+
+
 }
