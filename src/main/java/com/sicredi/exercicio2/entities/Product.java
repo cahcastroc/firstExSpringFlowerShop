@@ -5,6 +5,7 @@ import com.sicredi.exercicio2.exceptions.Constants;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
@@ -16,10 +17,14 @@ public class Product implements Serializable {
     private Long id;
 
     @NotBlank(message= "Nome " + Constants.OBRIGATORIO)
-    @Length (min=3, max= 20, message = Constants.OBRIGATORIO)
+    @Length (min=3, max= 20, message = "Campo precisa ter 3 a 20 caracteres")
     private String name;
     private TypeEnum type;
     private String family;
+
+
+    private Double price;
+
     private String purchaseYear;
     private String expirationDate;
 
@@ -30,11 +35,12 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(Long id, String name, TypeEnum type, String family, String purchaseYear, String expirationDate, Supplier supplier) {
+    public Product(Long id, String name, TypeEnum type, String family, Double price, String purchaseYear, String expirationDate, Supplier supplier) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.family = family;
+        this.price = price;
         this.purchaseYear = purchaseYear;
         this.expirationDate = expirationDate;
         this.supplier = supplier;
@@ -42,6 +48,14 @@ public class Product implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public void setId(Long id) {
