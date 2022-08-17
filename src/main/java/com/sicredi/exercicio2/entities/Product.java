@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -22,7 +23,7 @@ public class Product implements Serializable {
     private TypeEnum type;
     private String family;
 
-
+    @NotNull(message=Constants.OBRIGATORIO)
     private Double price;
 
     private String purchaseYear;

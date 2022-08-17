@@ -16,12 +16,16 @@ import java.util.List;
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
-
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
        List<Erro> erros = generationErrors(ex.getBindingResult());
 
         return handleExceptionInternal(ex,erros,new HttpHeaders(),HttpStatus.BAD_REQUEST,request);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        return super.handleExceptionInternal(ex, body, headers, status, request);
     }
 
     private List<Erro> generationErrors(BindingResult bindingResult) {
