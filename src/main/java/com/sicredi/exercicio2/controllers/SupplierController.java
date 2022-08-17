@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class SupplierController {
     }
 
     @PostMapping
-    public ResponseEntity<Supplier> addSupplier(@RequestBody Supplier supplier){
+    public ResponseEntity<Supplier> addSupplier(@Valid @RequestBody Supplier supplier){
         Supplier supplierAdd = supplierService.add(supplier);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(supplierAdd);
@@ -38,7 +39,7 @@ public class SupplierController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Supplier> editProduct(@PathVariable Long id, @RequestBody Supplier supplier){
+    public ResponseEntity<Supplier> editProduct(@Valid @PathVariable Long id, @RequestBody Supplier supplier){
         return ResponseEntity.ok(supplierService.editSupplier(id, supplier));
     }
 

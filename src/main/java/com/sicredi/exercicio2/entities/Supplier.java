@@ -1,7 +1,11 @@
 package com.sicredi.exercicio2.entities;
 
 
+import com.sicredi.exercicio2.exceptions.Constants;
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +19,12 @@ public class Supplier implements Serializable {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome " + Constants.OBRIGATORIO)
+    @Length(min = 3, max = 60, message = "Nome precisa ter entre 3 e 60 caracteres")
     private String name;
 
+    @NotBlank(message = "Nome " + Constants.OBRIGATORIO)
+    @Length( min = 14, max = 14, message = "CNPJ precisa ter 14 caracteres")
     private String cnpj;
 
     @OneToMany

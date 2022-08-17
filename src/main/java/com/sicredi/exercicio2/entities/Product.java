@@ -1,7 +1,11 @@
 package com.sicredi.exercicio2.entities;
 
 
+import com.sicredi.exercicio2.exceptions.Constants;
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
@@ -11,6 +15,8 @@ public class Product implements Serializable {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message= "Nome " + Constants.OBRIGATORIO)
+    @Length (min=3, max= 20, message = Constants.OBRIGATORIO)
     private String name;
     private TypeEnum type;
     private String family;
