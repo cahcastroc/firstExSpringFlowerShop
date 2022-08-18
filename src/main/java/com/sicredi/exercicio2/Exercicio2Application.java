@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan(basePackages = "com.sicredi.exercicio2.model")
 @EnableJpaRepositories(basePackages = "com.sicredi.exercicio2.repositories")
-@ComponentScan(basePackages = {"com.sicredi.exercicio2.controllers","com.sicredi.exercicio2.exceptions","com.sicredi.exercicio2.services"})
+@ComponentScan(basePackages = {"com.sicredi.exercicio2.controllers","com.sicredi.exercicio2.exceptions","com.sicredi.exercicio2.services", "com.sicredi.exercicio2.config.security"})
 
 public class Exercicio2Application {
 
