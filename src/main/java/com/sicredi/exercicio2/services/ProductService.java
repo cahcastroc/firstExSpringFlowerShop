@@ -1,14 +1,12 @@
 package com.sicredi.exercicio2.services;
 
 
-import com.sicredi.exercicio2.entities.Product;
+import com.sicredi.exercicio2.model.Product;
 import com.sicredi.exercicio2.repositories.ProductRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;

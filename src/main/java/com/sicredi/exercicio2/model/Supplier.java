@@ -1,4 +1,4 @@
-package com.sicredi.exercicio2.entities;
+package com.sicredi.exercicio2.model;
 
 
 import com.sicredi.exercicio2.exceptions.Constants;

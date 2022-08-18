@@ -1,8 +1,7 @@
 package com.sicredi.exercicio2.controllers;
 
 
-import com.sicredi.exercicio2.entities.Product;
-import com.sicredi.exercicio2.entities.Supplier;
+import com.sicredi.exercicio2.model.Supplier;
 import com.sicredi.exercicio2.services.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

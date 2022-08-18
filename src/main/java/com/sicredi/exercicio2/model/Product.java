@@ -1,14 +1,12 @@
-package com.sicredi.exercicio2.entities;
+package com.sicredi.exercicio2.model;
 
 
 import com.sicredi.exercicio2.exceptions.Constants;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @Entity

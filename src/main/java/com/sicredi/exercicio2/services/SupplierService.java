@@ -1,7 +1,7 @@
 package com.sicredi.exercicio2.services;
 
 
-import com.sicredi.exercicio2.entities.Supplier;
+import com.sicredi.exercicio2.model.Supplier;
 import com.sicredi.exercicio2.repositories.SupplierRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

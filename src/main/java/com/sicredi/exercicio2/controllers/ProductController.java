@@ -1,6 +1,6 @@
 package com.sicredi.exercicio2.controllers;
 
-import com.sicredi.exercicio2.entities.Product;
+import com.sicredi.exercicio2.model.Product;
 import com.sicredi.exercicio2.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,7 +40,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> editProduct(@Valid @PathVariable Long id, @RequestBody Product product){
+    public ResponseEntity<Product> editProduct(@PathVariable Long id, @Valid @RequestBody Product product){
         return ResponseEntity.ok(productService.editProduct(id,product));
     }
 

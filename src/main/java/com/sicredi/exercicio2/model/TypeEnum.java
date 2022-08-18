@@ -1,4 +1,4 @@
-package com.sicredi.exercicio2.entities;
+package com.sicredi.exercicio2.model;
 
 public enum TypeEnum {
 
